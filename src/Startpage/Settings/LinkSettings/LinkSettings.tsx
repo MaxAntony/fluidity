@@ -1,24 +1,27 @@
-import React from "react"
+import React from 'react';
 
-import styled from "@emotion/styled"
+import styled from '@emotion/styled';
 
-import { linkGroup } from "../../../data/data"
-import { SettingsLabel } from "../SettingsWindow"
-import { OptionTextArea } from "./OptionTextArea"
+import { linkGroup } from '../../../data/data';
+import { SettingsLabel } from '../SettingsWindow';
+import { OptionTextArea } from './OptionTextArea';
 
 interface props {
-  linkGroups: linkGroup[]
-  setLinkGroups: (value: linkGroup[]) => void
+  linkGroups: linkGroup[];
+  setLinkGroups: (value: linkGroup[]) => void;
 }
 export const GeneralSettingsContent = styled.div`
   width: 100%;
-`
+`;
 
 export const LinkSettings = ({ linkGroups, setLinkGroups }: props) => {
   return (
     <GeneralSettingsContent>
       <SettingsLabel>Links</SettingsLabel>
-      <OptionTextArea onChange={setLinkGroups} initialValue={linkGroups} />
+      <OptionTextArea
+        onChange={setLinkGroups}
+        initialValue={linkGroups}
+      />
     </GeneralSettingsContent>
-  )
-}
+  );
+};

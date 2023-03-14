@@ -1,9 +1,9 @@
-import React from "react"
+import React from 'react';
 
-import styled from "@emotion/styled"
+import styled from '@emotion/styled';
 
-import { changelog, ChangelogVersion } from "../../../data/changelog"
-import logo from "../../../data/pictures/logo.png"
+import { changelog, ChangelogVersion } from '../../../data/changelog';
+import logo from '../../../data/pictures/logo.png';
 
 const ChangelogWrapper = styled.div`
   width: 100%;
@@ -19,16 +19,16 @@ const ChangelogWrapper = styled.div`
     width: 180px;
     height: 180px;
   }
-`
+`;
 const StyledVersion = styled.div`
   width: 600px;
   > p {
     margin-bottom: 10px;
   }
-`
+`;
 const ChangeItem = styled.li`
   white-space: nowrap;
-`
+`;
 
 const Version = ({ version, description, changes }: ChangelogVersion) => {
   return (
@@ -40,17 +40,23 @@ const Version = ({ version, description, changes }: ChangelogVersion) => {
         <ChangeItem key={index}>{change}</ChangeItem>
       ))}
     </StyledVersion>
-  )
-}
+  );
+};
 
 export const Changelog = () => {
   return (
     <ChangelogWrapper>
-      <img src={logo} alt="logo" />
+      <img
+        src={logo}
+        alt='logo'
+      />
       <h1>Changelog</h1>
       {changelog.map((version: ChangelogVersion) => (
-        <Version key={version.version} {...version} />
+        <Version
+          key={version.version}
+          {...version}
+        />
       ))}
     </ChangelogWrapper>
-  )
-}
+  );
+};

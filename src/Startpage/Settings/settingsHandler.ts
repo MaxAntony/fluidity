@@ -1,104 +1,91 @@
-import {
-  linkGroup,
-  Theme,
-  Search as SearchType,
-  links,
-  searchSettings,
-  themes,
-} from "../../data/data"
+import { linkGroup, Theme, Search as SearchType, links, searchSettings, themes } from '../../data/data';
 
 export const Search = {
   get: () => {
-    const lsSearch = localStorage.getItem("search-settings")
-    if (lsSearch) return Search.parse(lsSearch)
-    return undefined
+    const lsSearch = localStorage.getItem('search-settings');
+    if (lsSearch) return Search.parse(lsSearch);
+    return undefined;
   },
   getWithFallback: () => {
     try {
-      return Search.get() || searchSettings
+      return Search.get() || searchSettings;
     } catch {
-      console.error(
-        "Your currently applied search settings appear to be corrupted."
-      )
-      return searchSettings
+      console.error('Your currently applied search settings appear to be corrupted.');
+      return searchSettings;
     }
   },
 
-  set: (searchSettings: SearchType) =>
-    localStorage.setItem("search-settings", JSON.stringify(searchSettings)),
+  set: (searchSettings: SearchType) => localStorage.setItem('search-settings', JSON.stringify(searchSettings)),
 
   parse: (searchSettings: string) => JSON.parse(searchSettings) as SearchType,
-}
+};
 
 export const Themes = {
   get: () => {
-    const lsThemes = localStorage.getItem("themes")
-    if (lsThemes) return JSON.parse(lsThemes) as Theme[]
-    return undefined
+    const lsThemes = localStorage.getItem('themes');
+    if (lsThemes) return JSON.parse(lsThemes) as Theme[];
+    return undefined;
   },
   getWithFallback: () => {
     try {
-      return Themes.get() || themes
+      return Themes.get() || themes;
     } catch {
-      console.error("Your currently applied themes appear to be corrupted.")
-      return themes
+      console.error('Your currently applied themes appear to be corrupted.');
+      return themes;
     }
   },
 
-  set: (themes: Theme[]) =>
-    localStorage.setItem("themes", JSON.stringify(themes)),
+  set: (themes: Theme[]) => localStorage.setItem('themes', JSON.stringify(themes)),
 
   add: (theme: Theme) => {
-    const lsThemes = Themes.get()
-    if (lsThemes) Themes.set([...lsThemes, theme])
-    else Themes.set([theme])
+    const lsThemes = Themes.get();
+    if (lsThemes) Themes.set([...lsThemes, theme]);
+    else Themes.set([theme]);
   },
 
   remove: (name: string) => {
-    const lsThemes = Themes.get()
-    if (lsThemes) Themes.set(lsThemes.filter(theme => theme.name !== name))
+    const lsThemes = Themes.get();
+    if (lsThemes) Themes.set(lsThemes.filter((theme) => theme.name !== name));
   },
 
   parse: (theme: string) => JSON.parse(theme) as Theme,
-}
+};
 
 export const Links = {
-  getRaw: () => localStorage.getItem("link-groups"),
+  getRaw: () => localStorage.getItem('link-groups'),
   get: () => {
-    const lsLinks = localStorage.getItem("link-groups")
-    if (lsLinks) return Links.parse(lsLinks)
-    return undefined
+    const lsLinks = localStorage.getItem('link-groups');
+    if (lsLinks) return Links.parse(lsLinks);
+    return undefined;
   },
   getWithFallback: () => {
     try {
-      return Links.get() || links
+      return Links.get() || links;
     } catch {
-      console.error("Your currently applied links appear to be corrupted.")
-      return links
+      console.error('Your currently applied links appear to be corrupted.');
+      return links;
     }
   },
 
-  set: (themes: linkGroup[]) =>
-    localStorage.setItem("link-groups", JSON.stringify(themes)),
+  set: (themes: linkGroup[]) => localStorage.setItem('link-groups', JSON.stringify(themes)),
 
   parse: (linkGroups: string) => JSON.parse(linkGroups) as linkGroup[],
-}
+};
 
 export const Design = {
   get: () => {
-    const lsDesign = localStorage.getItem("design")
-    if (lsDesign) return Themes.parse(lsDesign)
-    return undefined
+    const lsDesign = localStorage.getItem('design');
+    if (lsDesign) return Themes.parse(lsDesign);
+    return undefined;
   },
   getWithFallback: () => {
     try {
-      return Design.get() || themes[0]
+      return Design.get() || themes[0];
     } catch {
-      console.error("Your currently applied design appears to be corrupted.")
-      return themes[0]
+      console.error('Your currently applied design appears to be corrupted.');
+      return themes[0];
     }
   },
 
-  set: (design: Theme) =>
-    localStorage.setItem("design", JSON.stringify(design)),
-}
+  set: (design: Theme) => localStorage.setItem('design', JSON.stringify(design)),
+};

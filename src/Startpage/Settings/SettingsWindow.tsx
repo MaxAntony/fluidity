@@ -1,19 +1,14 @@
-import React, { useState } from "react"
+import React, { useState } from 'react';
 
-import styled from "@emotion/styled"
-import {
-  faTimes,
-  faTrash,
-  faSave,
-  faFire,
-} from "@fortawesome/free-solid-svg-icons"
+import styled from '@emotion/styled';
+import { faTimes, faTrash, faSave, faFire } from '@fortawesome/free-solid-svg-icons';
 
-import { IconButton } from "../../components/IconButton"
-import { Changelog } from "./Changelog/Changelog"
-import { DesignSettings } from "./DesignSettings/DesignSettings"
-import { LinkSettings } from "./LinkSettings/LinkSettings"
-import { SearchSettings } from "./SearchSettings/SearchSettings"
-import * as Settings from "./settingsHandler"
+import { IconButton } from '../../components/IconButton';
+import { Changelog } from './Changelog/Changelog';
+import { DesignSettings } from './DesignSettings/DesignSettings';
+import { LinkSettings } from './LinkSettings/LinkSettings';
+import { SearchSettings } from './SearchSettings/SearchSettings';
+import * as Settings from './settingsHandler';
 
 const StyledSettingsWindow = styled.div`
   background-color: var(--bg-color);
@@ -27,16 +22,16 @@ const StyledSettingsWindow = styled.div`
   border: 2px solid var(--default-color);
   padding: 60px 30px 30px 30px;
   box-shadow: 10px 10px 0px var(--accent-color);
-`
+`;
 const WindowContent = styled.div`
   width: 100%;
   height: calc(100% - 80px);
   display: flex;
-`
+`;
 
 const WindowHeader = styled.div`
   ::before {
-    content: "Settings";
+    content: 'Settings';
     margin: 5px 20px 0 10px;
   }
   color: var(--bg-color);
@@ -48,7 +43,7 @@ const WindowHeader = styled.div`
   top: 0;
   display: flex;
   justify-content: space-between;
-`
+`;
 
 const WindowFooter = styled.div`
   display: flex;
@@ -57,7 +52,7 @@ const WindowFooter = styled.div`
   left: 30px;
   right: 30px;
   bottom: 30px;
-`
+`;
 
 export const StyledSettingsContent = styled.div`
   background-color: var(--bg-color);
@@ -66,11 +61,11 @@ export const StyledSettingsContent = styled.div`
   margin-right: 30px;
   padding-right: 20px;
   overflow-y: auto;
-`
+`;
 export const SettingsLabel = styled.p`
   font-size: 1rem;
   padding: 10px 0;
-`
+`;
 
 export const SettingElement = styled.div`
   background-color: var(--bg-color);
@@ -79,14 +74,14 @@ export const SettingElement = styled.div`
   + {
     margin-top: 15px;
   }
-`
+`;
 
 const CloseButton = styled(IconButton)`
   z-index: 15;
   height: 30px;
   opacity: 1;
   padding: 0;
-`
+`;
 
 export const SettingsButton = styled(IconButton)`
   background-color: var(--default-color);
@@ -96,13 +91,13 @@ export const SettingsButton = styled(IconButton)`
   :enabled:hover {
     animation: circling-shadow-small 2s ease 0s infinite normal;
   }
-`
+`;
 
 const Tabbar = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-`
+`;
 
 const TabOption = styled.button<{ active: boolean }>`
   font-size: 1rem;
@@ -116,41 +111,39 @@ const TabOption = styled.button<{ active: boolean }>`
   background-color: transparent;
   outline: none;
   border: none;
-  cursor: ${({ active }) => (active ? "default" : "pointer")};
-  ${({ active }) => active && "text-shadow: var(--text-shadow-downwards)"};
+  cursor: ${({ active }) => (active ? 'default' : 'pointer')};
+  ${({ active }) => active && 'text-shadow: var(--text-shadow-downwards)'};
   :hover {
     text-shadow: var(--text-shadow-downwards);
   }
-`
+`;
 
-const TabOptions = ["Links", "Appearance", "Searchbar", "Changelog"]
+const TabOptions = ['Links', 'Appearance', 'Searchbar', 'Changelog'];
 
 interface props {
-  hidePopup: () => void
+  hidePopup: () => void;
 }
 
 export const SettingsWindow = ({ hidePopup }: props) => {
-  const [currentTab, setCurrentTab] = useState(TabOptions[0])
-  const [design, setDesign] = useState(Settings.Design.getWithFallback())
-  const [themes, setThemes] = useState(Settings.Themes.getWithFallback())
-  const [linkGroups, setLinkGroups] = useState(Settings.Links.getWithFallback())
-  const [searchSettings, setSearchSettings] = useState(
-    Settings.Search.getWithFallback()
-  )
+  const [currentTab, setCurrentTab] = useState(TabOptions[0]);
+  const [design, setDesign] = useState(Settings.Design.getWithFallback());
+  const [themes, setThemes] = useState(Settings.Themes.getWithFallback());
+  const [linkGroups, setLinkGroups] = useState(Settings.Links.getWithFallback());
+  const [searchSettings, setSearchSettings] = useState(Settings.Search.getWithFallback());
 
   const applyValues = () => {
-    Settings.Design.set(design)
-    Settings.Themes.set(themes)
-    Settings.Search.set(searchSettings)
-    Settings.Links.set(linkGroups)
-    window.location.reload()
-  }
+    Settings.Design.set(design);
+    Settings.Themes.set(themes);
+    Settings.Search.set(searchSettings);
+    Settings.Links.set(linkGroups);
+    window.location.reload();
+  };
 
   return (
     <StyledSettingsWindow>
       <WindowHeader>
         <Tabbar>
-          {TabOptions.map(option => (
+          {TabOptions.map((option) => (
             <TabOption
               key={option}
               active={option === currentTab}
@@ -160,15 +153,22 @@ export const SettingsWindow = ({ hidePopup }: props) => {
             </TabOption>
           ))}
         </Tabbar>
-        <CloseButton inverted onClick={() => hidePopup()} icon={faTimes} />
+        <CloseButton
+          inverted
+          onClick={() => hidePopup()}
+          icon={faTimes}
+        />
       </WindowHeader>
 
       <WindowContent>
-        {currentTab === "Links" && (
-          <LinkSettings linkGroups={linkGroups} setLinkGroups={setLinkGroups} />
+        {currentTab === 'Links' && (
+          <LinkSettings
+            linkGroups={linkGroups}
+            setLinkGroups={setLinkGroups}
+          />
         )}
 
-        {currentTab === "Appearance" && (
+        {currentTab === 'Appearance' && (
           <DesignSettings
             design={design}
             setDesign={setDesign}
@@ -177,38 +177,38 @@ export const SettingsWindow = ({ hidePopup }: props) => {
           />
         )}
 
-        {currentTab === "Searchbar" && (
+        {currentTab === 'Searchbar' && (
           <SearchSettings
             searchSettings={searchSettings}
             setSearchSettings={setSearchSettings}
           />
         )}
 
-        {currentTab === "Changelog" && <Changelog />}
+        {currentTab === 'Changelog' && <Changelog />}
       </WindowContent>
 
       <WindowFooter>
         <SettingsButton
           onClick={() => applyValues()}
-          text={"Apply Changes"}
+          text={'Apply Changes'}
           icon={faSave}
         />
         <SettingsButton
           onClick={() => {
-            window.location.reload()
+            window.location.reload();
           }}
-          text={"Discard Changes"}
+          text={'Discard Changes'}
           icon={faFire}
         />
         <SettingsButton
           onClick={() => {
-            localStorage.clear()
-            window.location.reload()
+            localStorage.clear();
+            window.location.reload();
           }}
-          text={"Delete All Settings"}
+          text={'Delete All Settings'}
           icon={faTrash}
         />
       </WindowFooter>
     </StyledSettingsWindow>
-  )
-}
+  );
+};

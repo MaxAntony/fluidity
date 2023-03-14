@@ -1,14 +1,10 @@
-import React from "react"
+import React from 'react';
 
-import styled from "@emotion/styled"
-import {
-  FontAwesomeIcon,
-  FontAwesomeIconProps,
-} from "@fortawesome/react-fontawesome"
+import styled from '@emotion/styled';
+import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 
 const StyledIconButton = styled.button<{ inverted?: boolean }>`
-  color: ${({ inverted }) =>
-    inverted ? "var(--bg-color)" : "var(--default-color)"};
+  color: ${({ inverted }) => (inverted ? 'var(--bg-color)' : 'var(--default-color)')};
   background-color: transparent;
   min-width: 50px;
   font-size: 20px;
@@ -27,7 +23,7 @@ const StyledIconButton = styled.button<{ inverted?: boolean }>`
             drop-shadow(-2px -2px 0 var(--accent-color))
             drop-shadow(-2px 2px 0 var(--accent-color))
             drop-shadow(2px -2px 0 var(--accent-color))`
-        : "animation: box-flicker 0.01s ease 0s infinite alternate"};
+        : 'animation: box-flicker 0.01s ease 0s infinite alternate'};
   }
   :focus {
     outline: none;
@@ -40,12 +36,12 @@ const StyledIconButton = styled.button<{ inverted?: boolean }>`
   > span {
     padding-right: 10px;
   }
-`
-type props = Partial<Pick<FontAwesomeIconProps, "icon">> &
+`;
+type props = Partial<Pick<FontAwesomeIconProps, 'icon'>> &
   React.ButtonHTMLAttributes<HTMLButtonElement> & {
-    text?: string
-    inverted?: boolean
-  }
+    text?: string;
+    inverted?: boolean;
+  };
 
 export const IconButton = ({ icon, text, children, ...props }: props) => {
   return (
@@ -54,5 +50,5 @@ export const IconButton = ({ icon, text, children, ...props }: props) => {
       {text && <span>{text}</span>}
       {icon && <FontAwesomeIcon icon={icon}></FontAwesomeIcon>}
     </StyledIconButton>
-  )
-}
+  );
+};

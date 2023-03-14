@@ -1,22 +1,16 @@
-import React, {
-  MouseEvent,
-  PropsWithChildren,
-  useEffect,
-  useRef,
-  useState,
-} from "react"
+import React, { MouseEvent, PropsWithChildren, useEffect, useRef, useState } from 'react';
 
-import styled from "@emotion/styled"
+import styled from '@emotion/styled';
 
 const StyledAccordionContainer = styled.div`
   margin-left: 100px;
   display: flex;
   width: calc(100% - 400px - 100px);
-`
+`;
 
 export const AccordionContainer = ({ children }: PropsWithChildren) => (
   <StyledAccordionContainer>{children}</StyledAccordionContainer>
-)
+);
 
 const StyledAccordionGroup = styled.div`
   height: 400px;
@@ -27,7 +21,7 @@ const StyledAccordionGroup = styled.div`
   :first-of-type {
     border-left: 3px solid var(--default-color);
   }
-`
+`;
 
 const AccordionContent = styled.div<{ width: number }>`
   height: 100%;
@@ -37,7 +31,7 @@ const AccordionContent = styled.div<{ width: number }>`
   justify-content: center;
   overflow: hidden;
   transition: 0.3s;
-`
+`;
 
 const AccordionTitleWrapper = styled.button<{ active: boolean }>`
   padding: 0;
@@ -45,20 +39,20 @@ const AccordionTitleWrapper = styled.button<{ active: boolean }>`
   border: 4px solid var(--accent-color);
   height: 100%;
   width: 90px;
-  cursor: ${({ active }) => (active ? "default" : "pointer")};
+  cursor: ${({ active }) => (active ? 'default' : 'pointer')};
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0.8;
   position: relative;
   ::before {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0px;
     width: 100%;
-    height: ${({ active }) => (active ? "390px" : "0")};
+    height: ${({ active }) => (active ? '390px' : '0')};
     background-color: var(--accent-color);
-    transition: ${({ active }) => (active ? "1s" : ".5s")};
+    transition: ${({ active }) => (active ? '1s' : '.5s')};
   }
   :hover,
   :focus {
@@ -85,11 +79,11 @@ const AccordionTitleWrapper = styled.button<{ active: boolean }>`
     width: 82px;
     height: 50px;
     position: absolute;
-    top: ${({ active }) => (active ? "0px" : "350px")};
+    top: ${({ active }) => (active ? '0px' : '350px')};
     overflow: hidden;
-    transition: ${({ active }) => (active ? "1s" : ".5s")};
+    transition: ${({ active }) => (active ? '1s' : '.5s')};
     ::before {
-      content: "";
+      content: '';
       width: 180px;
       height: 185px;
       position: absolute;
@@ -129,41 +123,34 @@ const AccordionTitleWrapper = styled.button<{ active: boolean }>`
             }
         }
     `};
-`
+`;
 
 const AccordionTitle = styled.h1<{ title: string; active: boolean }>`
   transform: rotate(90deg);
   min-width: max-content;
-  color: ${({ active }) =>
-    active ? "var(--bg-color)" : "var(--default-color)"};
+  color: ${({ active }) => (active ? 'var(--bg-color)' : 'var(--default-color)')};
   transition: 0.5s;
   letter-spacing: 5px;
-`
+`;
 
 type groupProps = PropsWithChildren<{
-  active: boolean
-  title: string
-  onClick: () => void
-  onMouseDown: (e: MouseEvent) => void
-}>
+  active: boolean;
+  title: string;
+  onClick: () => void;
+  onMouseDown: (e: MouseEvent) => void;
+}>;
 
-export const AccordionGroup = ({
-  active,
-  title,
-  children,
-  onClick,
-  onMouseDown,
-}: groupProps) => {
-  const ref = useRef<HTMLDivElement>(null)
-  const [contentWidth, setContentWidth] = useState(active ? 500 : 0)
+export const AccordionGroup = ({ active, title, children, onClick, onMouseDown }: groupProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [contentWidth, setContentWidth] = useState(active ? 500 : 0);
   useEffect(() => {
-    const parent = ref.current?.parentElement
+    const parent = ref.current?.parentElement;
     if (parent && active) {
-      setContentWidth(parent.clientWidth - parent.children.length * 113 - 3)
+      setContentWidth(parent.clientWidth - parent.children.length * 113 - 3);
     } else {
-      setContentWidth(0)
+      setContentWidth(0);
     }
-  }, [active])
+  }, [active]);
 
   return (
     <StyledAccordionGroup ref={ref}>
@@ -173,14 +160,20 @@ export const AccordionGroup = ({
         onClick={onClick}
         tabIndex={active ? -1 : undefined}
       >
-        <div className={"wave"} />
-        <AccordionTitle active={active} title={title}>
+        <div className={'wave'} />
+        <AccordionTitle
+          active={active}
+          title={title}
+        >
           {title}
         </AccordionTitle>
       </AccordionTitleWrapper>
-      <AccordionContent width={contentWidth} aria-hidden={!active || undefined}>
+      <AccordionContent
+        width={contentWidth}
+        aria-hidden={!active || undefined}
+      >
         {children}
       </AccordionContent>
     </StyledAccordionGroup>
-  )
-}
+  );
+};
