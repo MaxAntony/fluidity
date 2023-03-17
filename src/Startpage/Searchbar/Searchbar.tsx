@@ -76,7 +76,7 @@ export const Searchbar = () => {
     <StyledSearchbarContainer>
       {searchSymbol && <SearchIcon src={searchSymbol} />}
       <StyledSearchbar
-        placeholder='Always stay clean!'
+        placeholder={"let's conquer the world!"}
         type='input'
         onKeyUp={(e) => e.which === 13 && redirectToSearch(e.currentTarget.value)}
         autoFocus

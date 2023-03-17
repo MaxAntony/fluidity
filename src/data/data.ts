@@ -30,49 +30,49 @@ export const links: linkGroup[] = [
     title: 'Reddit',
     links: [
       {
-        label: 'r/startpages',
-        value: 'https://www.reddit.com/r/startpages/',
-      },
-      {
-        label: 'r/unixporn',
+        label: 'r/UnixPorn',
         value: 'https://www.reddit.com/r/unixporn/',
       },
       {
-        label: 'r/rainmeter',
-        value: 'https://www.reddit.com/r/rainmeter/',
+        label: 'r/Neovim',
+        value: 'https://www.reddit.com/r/neovim/',
       },
       {
-        label: 'r/AnimalsBeingDerps',
-        value: 'https://www.reddit.com/r/AnimalsBeingDerps/',
+        label: 'r/ArchLinux',
+        value: 'https://www.reddit.com/r/archlinux/',
+      },
+      {
+        label: 'r/Linux',
+        value: 'https://www.reddit.com/r/linux/',
+      },
+      {
+        label: 'r/OpenSource',
+        value: 'https://www.reddit.com/r/opensource/',
       },
     ],
   },
   {
-    title: '3D Modelling',
+    title: 'Design',
     links: [
       {
-        label: 'Blender',
-        value: 'https://www.blender.org/',
+        label: 'Canva',
+        value: 'https://www.canva.com',
       },
       {
-        label: 'BlenderGuru',
-        value: 'https://www.blenderguru.com/',
+        label: 'PenPot',
+        value: 'https://penpot.app/',
       },
       {
-        label: 'Poliigon',
-        value: 'https://www.poliigon.com/',
+        label: 'Figma',
+        value: 'https://www.figma.com/',
       },
       {
-        label: 'Blender tutorial',
-        value: 'https://www.youtube.com/watch?v=NyJWoyVx_XI&list=PLjEaoINr3zgEq0u2MzVgAaHEBt--xLB6U',
-      },
-      {
-        label: 'The other Blender tutorial',
-        value: 'https://www.youtube.com/watch?v=bpvh-9H8S1g&list=PL8eKBkZzqDiU-qcoaghCz04sMitC1yx6k&index=1',
+        label: 'Photopea',
+        value: 'https://www.photopea.com/',
       },
     ],
   },
-  {
+  /* {
     title: 'Design',
     links: [
       {
@@ -96,7 +96,7 @@ export const links: linkGroup[] = [
         value: 'https://www.youtube.com/c/AffinityRevolution/playlists',
       },
     ],
-  },
+  }, */
   {
     title: 'Music',
     links: [
