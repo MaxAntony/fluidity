@@ -36,9 +36,7 @@ const Version = ({ version, description, changes }: ChangelogVersion) => {
       <h2>v{version}</h2>
       {description && <p>{description}</p>}
       {changes && <p>Changes:</p>}
-      {changes?.map((change, index) => (
-        <ChangeItem key={index}>{change}</ChangeItem>
-      ))}
+      {changes?.map((change, index) => <ChangeItem key={index}>{change}</ChangeItem>)}
     </StyledVersion>
   );
 };

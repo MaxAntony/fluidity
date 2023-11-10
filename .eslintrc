@@ -45,22 +45,22 @@
       }
     ],
 
-    "prettier/prettier": [
-      "error",
-      {
-        "useTabs": false,
-        "trailingComma": "all",
-        "bracketSpacing": true,
-        "singleQuote": true,
-        "semi": true,
-        "tabWidth": 2,
-        "printWidth": 120,
-        "jsxSingleQuote": true,
-        "bracketSameLine": false,
-        "singleAttributePerLine": true,
-        "htmlWhitespaceSensitivity": "ignore"
-      }
-    ],
+    // "prettier/prettier": [
+    //   "error",
+    //   {
+    //     "useTabs": false,
+    //     "trailingComma": "all",
+    //     "bracketSpacing": true,
+    //     "singleQuote": true,
+    //     "semi": true,
+    //     "tabWidth": 2,
+    //     "printWidth": 120,
+    //     "jsxSingleQuote": true,
+    //     "bracketSameLine": false,
+    //     "singleAttributePerLine": true,
+    //     "htmlWhitespaceSensitivity": "ignore"
+    //   }
+    // ],
 
     "react/react-in-jsx-scope": "off",
     "react/destructuring-assignment": ["error", "always"],
